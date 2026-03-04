@@ -13,6 +13,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Embed version
+        run: sed -i '' "s/let version = \"dev\"/let version = \"${{ github.event.release.tag_name }}\"/" Sources/main.swift
+
       - name: Build
         run: swift build -c release
 

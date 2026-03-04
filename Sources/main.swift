@@ -292,6 +292,10 @@ func rescue(scanDir: URL, rootDir: URL, destDir: URL?, dryRun: Bool) {
     fputs("rescued: \(rescued.count - errors), size: \(totalSize), errors: \(errors)\n", stderr)
 }
 
+// MARK: - Version
+
+let version = "dev"
+
 // MARK: - Main
 
 func printUsage() {
@@ -341,6 +345,9 @@ func parseArgs(_ args: [String]) -> ParsedArgs {
             parsed.mode = "dry-run"
         case "--diagnose":
             parsed.mode = "diagnose"
+        case "--version", "-v":
+            print(version)
+            exit(0)
         case "--help", "-h":
             printUsage()
             exit(0)
