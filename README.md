@@ -29,6 +29,19 @@ swift build -c release
 cp .build/release/drive-rescue /usr/local/bin/
 ```
 
+## Install from GitHub Releases
+
+Download the latest zip from [Releases](https://github.com/katsusuke/drive-rescue/releases), then:
+
+```bash
+unzip drive-rescue-macos-arm64-*.zip
+xattr -d com.apple.quarantine ./drive-rescue
+chmod +x ./drive-rescue
+mv ./drive-rescue /usr/local/bin/
+```
+
+The `xattr` command removes the macOS Gatekeeper quarantine flag, which blocks unsigned binaries downloaded from the internet.
+
 ## Usage
 
 ```
