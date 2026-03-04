@@ -19,9 +19,9 @@ jobs:
       - name: Package
         run: |
           cp .build/release/drive-rescue drive-rescue
-          zip drive-rescue-macos-arm64.zip drive-rescue
+          zip "drive-rescue-macos-arm64-${{ github.event.release.tag_name }}.zip" drive-rescue
 
       - name: Upload to release
         env:
           GH_TOKEN: ${{ github.token }}
-        run: gh release upload "${{ github.event.release.tag_name }}" drive-rescue-macos-arm64.zip
+        run: gh release upload "${{ github.event.release.tag_name }}" "drive-rescue-macos-arm64-${{ github.event.release.tag_name }}.zip"
